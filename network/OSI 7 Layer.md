@@ -41,12 +41,11 @@
   * **라인 코딩** : 바이너리 데이터를 디지털 신호로 바꾸는 과정
 
     인코더와 디코더에 쓰임
-
-    ![1L_1](/Users/seungyoungoh/workspace/document/TIL/TIL/network/1L_1.png)
-
+    ![1L_1](https://user-images.githubusercontent.com/46865281/71701288-ff3e1c80-2e0b-11ea-9017-0278f5686a6f.png)
     
 
-  * **PCM**: 아날로그 신호 -> 디지털 신호 -> 바이너리 데이터로 저장하는 과정, PAM으로 표본을 채집(샘플링)하고 정량화(Quantization)로 값을 매기고 바이너리 값으로 바꾼 다음에 라인 코딩한다.![1L_2](/Users/seungyoungoh/workspace/document/TIL/TIL/network/1L_2.png)
+  * **PCM**: 아날로그 신호 -> 디지털 신호 -> 바이너리 데이터로 저장하는 과정, PAM으로 표본을 채집(샘플링)하고 정량화(Quantization)로 값을 매기고 바이너리 값으로 바꾼 다음에 라인 코딩한다.
+  ![1L_2](https://user-images.githubusercontent.com/46865281/71701295-036a3a00-2e0c-11ea-9648-bf4d29c490de.png)
 
   
 
@@ -54,7 +53,7 @@
 
     모듈레이터, 디모듈레이터에 쓰임 (둘을 합친게 모뎀)
 
-    ![1L_3](/Users/seungyoungoh/workspace/document/TIL/TIL/network/1L_3.png)
+  ![1L_3](https://user-images.githubusercontent.com/46865281/71701301-06652a80-2e0c-11ea-9de7-56abc30d5088.png)
 
   
 
