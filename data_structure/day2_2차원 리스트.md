@@ -1,6 +1,4 @@
-# List 2
-
-### 2차원 List
+# 2차원 리스트
 
 * 2차원 리스트 입력
 
@@ -15,6 +13,16 @@
   n, m = map(int, input().split())
   myList = [list(map(int,input().split())) for i in range(10)]
   ```
+
+
+
+* 2차원 리스트 생성
+
+  ```python
+  graph = [[i for i in range(10)] for j in range(10)]
+  ```
+
+  
 
 
 
@@ -94,6 +102,5 @@
   >>[(1,4,7),(2,5,8),(3,6,9)]
   ```
 
-  
 
-  
+
