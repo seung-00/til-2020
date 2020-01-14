@@ -101,6 +101,11 @@
   print(list(zip(*arr)))
   >>[(1,4,7),(2,5,8),(3,6,9)]
   ```
-
-
+  
+  ```python
+  transTable = [list(i) for i in zip(*table)]
+  #리스트 형태로 전치
+  ```
+  
+  
 
