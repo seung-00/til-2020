@@ -1,0 +1,476 @@
+# 동적 계획법
+
+[TOC]
+
+[권오흠 교수님의 강의를 들었습니다.](https://www.youtube.com/channel/UC-cOmaeWLm7Ii7erMQNatvA)
+
+
+
+## 이론
+
+* 동적 계획법
+
+  * 최적화 문제(optimisation problem) or  카운팅(counting) 문제에 적용됨
+  * 순서:
+    1. **Optimal Substructure** 구조를 확인한다.
+    2. 주어진 문제에 대한 **순환식**을 정의한다.
+    3. 순환식을 **memoization** or **bottom-up** 방식으로 구현한다.
+
+  
+
+* 순환식
+
+  1. 서로 overlapping 하는 subproblem들을 해결함으로써 원래 문제를 해결
+
+     * <img src="https://user-images.githubusercontent.com/46865281/74589575-c075c600-5049-11ea-94c0-ac617d3b6a42.png" alt="image" style="zoom:33%;" />
+
+  2. 어떤 문제의 최적해가 그것의 subproblem들의 회적해로부터 효율적으로 구해질 수 있을 때 그 문제는 **optimal substructure을 가진다**고 말한다. 분할정복, 그리드, DP 모두 문제가 가진 이런 특성을 이용함
+
+  3. 순환식은 Optimal Substructure을 표현한다
+
+  4. Optimal Substructure을 확인하는 질문: 
+
+     **최적해의 일부분이 그 부분에 대한 최적해인가?**
+
+  5. s에서  u까지 가는 최단 경로를 구하는데 그 경로의 중간에 v가 있다면
+
+     **dp[u] = min( dp[v] + w(v,u) )** 와 같이 표현할 수 있을 것이다.
+
+  6. 같은 조건에서 s에서 u까지 가는 최장 경로를 구한다면,
+
+     **dp[u] = min( dp[v] + w(v,u) )** 식은 성립하지 않는다.
+
+     아래 예시를 본다면, 1~4까지의 최장경로는 (1,2,3,4)지만, 1~3까지의 최장경로는 (1,4, 2, 3)이다.
+
+     <img src="https://user-images.githubusercontent.com/46865281/74590422-84defa00-5051-11ea-8e81-43c0527fdad3.png" alt="image" style="zoom:45%;" />
+
+     
+
+     
+
+     
+
+* memoization vs Dynamic Programming(bottom up)
+
+  * 광의의 의미로 둘 다 DP
+  * memoization은 top-down이며, 기본적으로 recursion이므로 overhead 수반
+  * bottom up은 **순환식의 우변이 항상 좌변보다 먼저 계산된다는 점이 중요**
+
+
+
+## 예제
+
+### 피보나치 수열
+
+<img src="https://user-images.githubusercontent.com/46865281/74500359-fd4a9b80-4f29-11ea-9fbb-aed25df645ff.png" alt="image" style="zoom:60%;" />
+
+* recursive
+
+  ```c++
+  int Fib(int n)
+  {
+    if (n==1 || n ==2)
+    	return 1;
+    else
+      return Fib(n-2) + Fib(n-1);
+  }
+  ```
+
+  중복 계산 발생, 예컨대 Fib(5)를 미리 계산했음에도 Fib(6)을 계산할 때 다시 계산함.
+
+  
+
+* memoization
+
+  ```c++
+  int Fib(int n)
+  {
+    if (n==1 || n==2)
+      return 1;
+    else if (f[n]>-1)	//배열 f가 -1로 초기화 되어있다고 가정
+      return f[n];
+    else
+    {
+      f[n] = Fib(n-2) + Fib(n-1);	//중간 계싼 결과를 caching 
+      return f[n];
+    }
+  }
+  ```
+
+  
+
+* bottom-up
+
+  ```c++
+  int Fib(int n)
+  {
+    f[1] = f[2] = 1;
+    for (int i = 3; i<=n; i++)
+      f[n] = f[n-1] + f[n-2];
+    return f[n];
+  }
+  ```
+
+  
+
+### 이항 계수
+
+<img src="https://user-images.githubusercontent.com/46865281/74500266-bb215a00-4f29-11ea-9157-c39655b6c731.png" alt="image" style="zoom:45%;" />
+
+* 일반적인 방법
+
+  ```c++
+  int binomial(int n, int k)
+  {
+    if (n==k || k ==0)
+      return 1;
+    else
+      return binomial(n-1, k) + binomial(n-1, k-1);
+    // 많은 계산이 중복됨
+  }
+  ```
+
+  
+
+* memoization
+
+  ```c++
+  int binomial(int n, int k)
+  {
+    if (n==k || k ==0)
+      return 1;
+    else if (binom[n][k]>-1)	//배열 binom이 -1로 초기화되어있다 가정
+      return binom[n][k];
+    else
+    {
+      binom[n][k] = binomial(n-1, k) + binomial(n-1, k-1);
+      return binom[n][k];
+    }
+  }
+  ```
+
+  
+
+* bottom-up
+
+  ```c++
+  int binomail(int n, int k)
+  {
+    for (int i=0; i<=n; i++)
+    {
+      for (int j=0; j<=k&&j<=i; j++)
+      {
+        if (j==0 || i==j)
+          binom[i][j] = 1;
+        else
+          binom[i][j] = binom[i-1][j-1] + binom[i-1][j];
+      }
+    }
+    return binom[n][k];
+  }
+  ```
+
+  * ` binom[i][j] = binom[i-1][j-1] + binom[i-1][j];`
+
+    bottom up은 순환식의 오른쪽 값이 왼쪽 값보다 항상 먼저 계산됨. 그래서 재귀가 필요 없는 것. 여기서는 2차원 배열의 바로 윗 행 값과 대각선 왼쪽 위 값이 항상 선행되서 계산되어야 함. 따라서 행 순서로 계산하면 오른쪽 값이 항상 선행되서 계산됨. 마찬가지의 이유로 내가 아래 행에서 계산하는 행보다 더 오른쪽 값까지 미리 계산할 필요는 없음
+
+    `for (int j=0; j<=k&&j<=i; j++)`
+
+    <img src="https://user-images.githubusercontent.com/46865281/74502501-1a369d00-4f31-11ea-9f84-81a89bfc6cf4.png" alt="image" style="zoom:45%;" />
+
+
+
+
+
+### 행렬 경로 문제
+
+> 정수들이 저장된 nxn 행렬의 좌상단에서 우하단까지 이동한다. 단 오른쪽이나 아래쪽 방향으로만 이동할 수 있다.
+>
+> 방문한 칸에 있는 정수들의 합이 최소가 되도록 하라.
+
+<img src="https://user-images.githubusercontent.com/46865281/74503826-8ca97c00-4f35-11ea-97a2-0c22abfb9455.png" alt="image" style="zoom:50%;" />
+
+* **DP 문제의 본질은 주어진 문제를 파악하고 순환식을 세우는 일에 있음**
+
+* (i, j)에 도달하기 위해서는 (i, j-1) 혹은 (i-1, j)를 거쳐야 한다. 또한 (i, j-1) 혹은 (i-1, j)까지는 최선의 방법으로 이동해야 한다.
+
+* 순환식
+
+  <img src="/Users/seungyoungoh/Library/Application Support/typora-user-images/image-20200214143458103.png" alt="image-20200214143458103" style="zoom:50%;" />
+
+* recursive
+
+  ```c++
+  int Mat(int i, int j)
+  {
+    if (i==1 && j==1)
+      return m[i][j]
+    else if (i==1)	// 외길
+      return Mat(1, j-1) + m[i][j];
+    else if (j==1)	// 외길 
+      return Mat(i-1, 1) + m[i][j];
+    else
+      return Math.min(math(i-1,j), Mat(i, j-1)) + m[i][j];	// General Case
+  }
+  ```
+
+  
+
+* memoization
+
+  ```c++
+  int Mat(int i, int j)
+  {
+    if  (L[i][j] != -1) return L[i][j];
+    if (i == 1 && j ==1)
+      L[i][j] = m[i][j];
+    else if (i == 1)
+      L[i][j] = Mat(1, j-1) + m[i][j];
+    else if (j == 1)
+      L[i][j] = Mat(i-1, 1) + m[i][j];
+    else
+      L[i][j] = Math.min(mat(i-1, j), Mat(i, j-1)) + m[i][j];
+    return L[i][j];
+  }
+  ```
+
+  
+
+* bottom up
+
+  ```c++
+  int Mat()
+  {
+    for (int i =1; i<=n; i++)
+    {
+      for (int j=1; j<=n; j++)
+      {
+        if (i == 1 && j ==1)
+          L[i][j] = m[1][1];
+        else if (i == 1)
+          L[i][j] = m[i][j] + L[i][j-1];
+        else if (j == 1)
+          L[i][j] = m[i][j] + L[i-1][j];
+        else
+          L[i][j] = m[i][j] + Math.min(L[i-1][j], L[i][j-1]);
+      }
+    }
+    return L[n][m];
+  }
+  ```
+
+  
+
+* Common Trick
+
+  위에서는 `i == 1` 과 `j == 1` 일 때 따로 처리가 필요하다.
+
+  ```c++
+  // L[0][j] = L[i][0] = INF for all i and j
+  int Mat()
+  {
+    for (int i=1; i<=n; i++)
+    {
+      for (int j=1; j<=n; j++)
+      {
+        if (i==1 && j==1)
+          L[i][j] = m[1][1];
+        else
+          L[i][j] = m[i][j] + Math.min(L[i-1][j], L[i][j-1]);  
+      }
+    }
+    return L[n][m];
+  }
+  ```
+
+  
+
+* 경로 구하기
+
+  <img src="https://user-images.githubusercontent.com/46865281/74588011-530f6880-503c-11ea-88c1-3fac0baf6987.png" alt="image" style="zoom:45%;" />
+
+  P라는 새로운 테이블을 만들어서 경로를 저장해놓는다.
+
+  ```c++
+  // L[0][j] = L[i][0] = INF for all i and j
+  int Mat()
+  {
+    for (int i=1; i<=n; i++)
+    {
+      for (int j=1; j<=n; j++)
+      {
+        if (i==1 && j==1)
+        {
+          L[i][j] = m[1][1];
+          P[i][j] = '-';
+        }
+        else
+        {
+         if (L[i-1][j] < L[i][j-1])
+         {
+           L[i][j] = m[i][j] + L[i-1][j];
+           P[i][j] = "up"
+         }
+          else
+          {
+            L[i][j] = m[i][j] = L[i][j-1];
+            P[i][j] = "left"
+          }
+        }
+      }
+    }
+    return L[n][m];
+  }
+  ```
+
+  
+
+* 경로 출력
+
+  ```c++
+  void PrintPath()
+  {
+    int i = n, j = n;
+    while(P[i][j] != '-')	//출발점까지
+    {
+      print(i+" "+j);
+      if (P[i][j] == 'left')
+        j = j-1
+      else
+        i = i-1;
+    }
+    print(i + " " + j);
+  }
+  ```
+
+  * recursive 하게
+
+  ```c++
+  void PrintPathRecursive(int i, int j)	// n, n
+  {
+    if (P[i][j] == '-')	// i, j == 1
+      print(i + " " + j);
+    else
+    {
+      if(P[i][j] == "left")
+        PrintPathRecursive(i, j-1);
+      else
+        PrintPathRecursive(i-1, j);
+      print(i + " " + j);
+    }
+  }
+  ```
+
+  
+
+
+
+### 행렬의 곱셈
+
+* p * q 행렬 A 와 q * r 행렬 B 곱하기
+
+  * c_ij = Sigma[k=1~q]{a_ik * b_kj}
+  * 연산의 횟수는 pqr
+
+  ```c++
+  void product(int A[][], int B[][], int C[][])
+  {
+    for (int i = 0; i<p; i++)
+    {
+      for (int j = 0; j<r; j++)
+      {
+        C[i][j] = 0;
+        for (int k=0; k<q; k++)
+          C[i][j] += A[i][k]*B[k][j];
+      }
+    }
+  }
+  ```
+
+  
+
+* Matrix - Chain 곱하기
+
+  * 행렬 곱은 결합법칙이 성립한다. 이때 곱하는 순서에 따라 연산량이 달라진다.
+
+  * n개의 행렬 곱 A1A2A3...An을 계산하는 최적의 순서는?
+
+  * 여기서 Ai는 p_k-1xp_k 행렬이다(즉 인접한 두 행렬의 곱셈은항상 가능하다).
+
+  * Optimal Substructure
+
+    <img src="https://user-images.githubusercontent.com/46865281/74600809-02e6e380-50da-11ea-9caf-db1fe325dea7.png" alt="image" style="zoom:50%;" />
+
+  * 순환식
+
+    * General Case: 최소의 조합 + {(p_i-1 * p_k ) * (p_k * p_j)}
+    * Base Case: i = j, 행렬이 하나니까 연산할 필요 없음 (0)
+
+    <img src="https://user-images.githubusercontent.com/46865281/74600833-3fb2da80-50da-11ea-9ab5-a43647ca448d.png" alt="image" style="zoom:100%;" />
+
+    <img src="https://user-images.githubusercontent.com/46865281/74600989-2ca10a00-50dc-11ea-9e7c-2c60c8b0ada0.png" alt="image" style="zoom:80%;" />
+
+    ```c++
+    int MatrixChain(int n)
+    {
+      for (int i=1; i<=n; i++)
+        m[i][i] = 0;
+      for (int r=1; r<=n-1; r++)	// 대각선의 개수
+      {
+        for (int i = 1; i<=n-r; i++)	// 행 인덱스. n-r은 한 대각선 내의 개수. 대각선이 r일 때 n-r개
+        {
+          int j = i+r;	// 열 인덱스, r이 증가하면서 시작점이 달라짐
+          m[i][j] = m[i+1][j] + p[i-1]*p[i]*p[j];
+          for (int k = i+1; k <= j-1; k++)	// i <= k <= j-1 비교의 마지막이 m[i, j-1], m[j, j]로 끝남
+          {
+            if (m[i][j] > m[i][k] + m[k+1][j] + p[i-1]*p[k]*p[j])
+              m[i][j] = m[i][k] + m[k+1][j] + p[i-1]*p[k]*p[j];
+          }
+        }
+      }
+      return m[1][n];
+    }
+    ```
+
+    
+
+### Longest Common Subsequence(LCS)
+
+* LCS는 common subsequence들 중 가장 긴 것을 의미함
+
+  "bcba" "abcbdab" 와 "bdcaba"의 LCS임
+
+* Optimal SubStructure
+
+  <img src="https://user-images.githubusercontent.com/46865281/74604753-2de62d00-5104-11ea-9a34-6a2bfa953ec0.png" alt="image" style="zoom:33%;" />
+
+* 순환식
+
+  <img src="https://user-images.githubusercontent.com/46865281/74604820-deecc780-5104-11ea-9edd-2ae4156a2c6c.png" alt="image" style="zoom:50%;" />
+
+* 구현
+
+  <img src="https://user-images.githubusercontent.com/46865281/74604853-4145c800-5105-11ea-90fa-97f0ff1fdecd.png" alt="image" style="zoom:50%;" />
+
+  ```c++
+  int LCS(int m; int n)	//m : length of X, n: length of Y
+  {
+    for (int i = 0; i<=m; i++)
+      c[i][0] = 0;
+    for (int j = 0; j<=n; j++)
+      c[0][j] = 0;
+    for (int i = 0; i<=m; i++)	// 행 우선 순서
+    {
+      for (int j = 0; j<=n; j++)
+      { 
+        if (X[i] == Y[j])
+          c[i][j] = c[i-1][j-1] + 1;
+        else
+          c[i][j] = Math.max(c[i-1][j], c[i][j-1]);
+      }
+    }
+    return c[m][n];
+  }
+  ```
+
+  
