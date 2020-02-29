@@ -19,20 +19,20 @@
 
 예제:
 
-[[백준] 1238. 파티][]
+[[백준] 1238. 파티]([https://github.com/SeungYoungOh/algorithm_study/blob/master/week6/200210/SeungYoung/%5B%EB%B0%B1%EC%A4%80%5D%201238.%20%ED%8C%8C%ED%8B%B0.md](https://github.com/SeungYoungOh/algorithm_study/blob/master/week6/200210/SeungYoung/[백준] 1238. 파티.md))
 
-* 우선순위 큐를 안 쓰고 방문 리스트를 만드는 경우 내가 했던 고민은, **"특정 노드를 방문했다고 체크하는 방식은, 아직 특정 노드로 가는 더 짧은 루트가 있음에도 그 루트를 스킵할 수도 있지 않을까?"** 였다.
+우선순위 큐를 안 쓰고 방문 리스트를 만드는 경우 내가 했던 고민은, **"특정 노드를 방문했다고 체크하는 방식은, 아직 특정 노드로 가는 더 짧은 루트가 있음에도 그 루트를 스킵할 수도 있지 않을까?"** 였다.
 
-  즉, 아래에서 start -> a -> fin이 빠름에도, start -> b -> fin 으로 간 뒤 방문 리스트를 체크하지 않나 싶었다.
+* 즉, 아래에서 start -> a -> fin이 빠름에도, start -> b -> fin 으로 간 뒤 방문 리스트를 체크하지 않나 싶었다.
 
   따져보면 그럴 수 없는 것이, 
 
   1. 방문했음을 체크하려면 현재 가중치들(dist) 중 그 노드까지 가는 거리가 최단이어야 한다.
-  2. 만약 start -> b -> fin 보다 짧은 루트 start -> x -> fin 이 존재한다면, start -> x 는 적어도 start -> b -> fin 보다 짧을 것이다. 
+2. 만약 start -> b -> fin 보다 짧은 루트 start -> x -> fin 이 존재한다면, start -> x 는 적어도 start -> b -> fin 보다 짧을 것이다. 
   3. 즉, 방문했다는 것의 선행 조건은 "지금까지 이동한 경로의 가중치보다 작은 경로가 없다" 이므로 최단 경로가 생략될 수 없다.
-
+  
   ```mermaid
-  stateDiagram
+stateDiagram
   start --> a : 4
   start --> b : 3
   
@@ -41,7 +41,7 @@
   
   start --> c: 8
   ```
-
+  
   
 
   

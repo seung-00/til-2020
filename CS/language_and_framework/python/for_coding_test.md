@@ -98,6 +98,16 @@
 
   
 
+* 삼항연산자
+
+  `val = test ? x : y` 
+
+  이런 c 스타일의 삼항연산자를 파이썬에서 표현하면 
+
+  `val = x if test else y` 가 된다.
+
+  
+
 *  zip()
 
   ```python
