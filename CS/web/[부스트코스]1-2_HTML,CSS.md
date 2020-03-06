@@ -575,12 +575,97 @@
 
 * layout 구현 방법은?
 
+  ```html
+<html>
+      <head>
+        <style> 
+          header{
+            background-color: #eee;
+          }
+          #wrap{
+              /* background-color: #ccc; */
+              overflow:auto;
+              margin:20px 0px
+              /* 위아래 20 좌우 0 마진 */
+          }
+          footer{
+              background-color: #eee;
+              clear:left;
+              /* 클리어를 통해 푸터가 플로트를 인식하게 만듬 */
+  
+          }
+          .left, .right, .moreright{
+            float:left;
+            height:200px;
+          }
+          .left{
+              width:17%;
+              margin-right:3%;
+              background-color: #27c;
+          }
+          .right{
+              width:60%;
+              text-align:center;
+              background-color: #47c;
+          }
+          /* 반가워요 옆에 이모티콘을 넣으려면? 일단 반가워요를 relative로 하고
+          absolute로 넣어준다. */
+          .right>h2{
+              position: relative;
+          }
+          .right .emoticon{
+              position:absolute;
+              top:0px;
+              right:20%;
+              color:#fff;
+          }
+          .moreright{
+              width:17%;
+              margin-left:3%;
+              background-color: #67c;
+          }
+          li{
+          list-style: none;}
+          </style>
+  
+      </head>
+   
+      <body>
+          <header>코딩은 재밌어.</header>
+          <div id="wrap">
+              <nav class="left">
+                  <ul>
+                      <li>menu</li>
+                      <li>home</li>
+                      <li>name</li>
+                  </ul>
+              </nav>
+              <div class = "right">
+                  <h2>
+                      <span>반가워요!</span>
+                      <div class = "emoticon">:-)</div>
+                  </h2>
+                  <ul>
+                      <li>SeungYoung</li>
+                      <li>InJae</li>
+                      <li>SeungHo</li>
+                  </ul>
+              </div>
+              <div class="moreright">
+                  for test
+              </div>
+          </div>
+      <footer>승영컴퍼니(주)</footer>
+      </body>
+  </html>
+  ```
+  
   1. 전체 레이아웃은 float을 잘 사용해서 2단, 3단 컬럼 배치를 구현
-
+  
   최근 css-grid, flex 속성 등을 쓰기도 함
-
+  
   2. 특별한 위치를 배치하기 위해 position absolute 를 사용함(기준점 relative)
-3. 네비게이션과 같은 엘리먼트는 inline-block 을 써서 가로로 배치하기도 함
+  3. 네비게이션과 같은 엘리먼트는 inline-block 을 써서 가로로 배치하기도 함
   4. 엘리먼트 안의 텍스트 간격과 다른 엘리먼트 간의 간격은 padding과 margin 속성을 잘 활용해서 위치시킴
   5. float은 상속이 안 먹혀서 overflow: auto 라는 스타일을 추가로 줘야 함. 예를 들어, 위에서 wrap에 백그라운드 컬러를 줬는데, overflow를 안 주면 상속이 안 먹혀서 색깔이 안 보인다(height:0으로 됨)
 
