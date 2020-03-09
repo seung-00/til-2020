@@ -78,6 +78,37 @@
 
 
 
+* web.xml
+
+  ```java
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+  version="2.5">
+      <display-name>exam25</display-name>
+      <welcome-file-list>
+          <welcome-file>index.html</welcome-file>
+          <welcome-file>index.htm</welcome-file>
+          <welcome-file>index.jsp</welcome-file>
+          <welcome-file>default.html</welcome-file>
+          <welcome-file>default.htm</welcome-file>
+          <welcome-file>default.jsp</welcome-file>
+      </welcome-file-list>
+      <servlet>
+          <description></description>
+          <display-name>TenServlet</display-name>
+          <servlet-name>TenServlet</servlet-name>
+          <servlet-class>exam.TenServlet</servlet-class>
+      </servlet>
+      <servlet-mapping>
+          <servlet-name>TenServlet</servlet-name>
+          <url-pattern>/ten</url-pattern>
+      </servlet-mapping>
+  </web-app>
+  ```
+
+  * `url-pattern` 여기서 요청이 들어오면 url 매핑에서 찾고 있다면 `servlet-name` 이걸로 같은 이름의 서블릿이 있는지 찾음 `servlet-class` 이건 경로
+
+
+
 ### 서블릿 생명 주기
 
 ```Java
@@ -277,6 +308,7 @@ public class LifecycleServlet extends HttpServlet {
     
 
 * 실습: 파라미터 읽어 들이기
+  
   * `http://localhost:8080/firstweb/parm?name=kim&age=5` 물음표 기준으로 뒤에 있는 것들이 파라미터임. `&` 가 각 파라미터들의 기준점임.  `=` 을 기준으로 좌항이 이름, 우항이 값
 
 
