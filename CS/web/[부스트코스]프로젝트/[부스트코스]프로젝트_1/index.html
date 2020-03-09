@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+        .top{
+            /* border: 1px solid black; */
+            /* 테스트용 코드 */
+            position: fixed;
+            top:0%;
+            width: 100%;
+            height: 10%;
+            border-bottom: 10px solid gainsboro;
+
+        }
+
+        .boxMenu1>a{
+            /* 레이아웃 */
+            float: right;
+            position: relative;
+            right: 20px;
+            margin: 5px;
+            margin-top: 27px;
+            /* margin-bottom: 35px; */
+
+            /* 박스 */
+            width:160px;
+            box-shadow: 3px 3px rgba(0,0,0,0.15);
+            height:30px;
+
+            
+            /* 텍스트 */
+            line-height: 30px;
+            background-color: cadetblue;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        #main{
+            text-align: center;
+            padding: 50px;
+            margin:70px;
+        }
+
+        #main>.boxMenu2>a{
+            /* 레이아웃 */
+            float: left;
+            position: relative;
+            left: 40%;
+            margin: 5px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+
+            /* 박스 */
+            width:100px;
+            height:100px;
+            background-color: cadetblue;
+            box-shadow: 3px 3px rgba(0,0,0,0.15);
+
+            /* 텍스트 */
+            line-height: 100px;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        p{
+            clear:left;
+        }
+
+        footer{
+            /* 테스트용 코드 */
+            /* border: 1px solid black; */
+
+            /* 레이아웃 */
+            position: fixed;
+            bottom:0%;
+
+            /* 박스 */
+            width: 100%;
+            height: 10%;
+            border-top: 10px solid gainsboro;
+
+            /* 텍스트 */
+            line-height: 80px;
+            text-align: center;
+            font-weight: bold;
+            color:silver;
+
+        }
+
+        a { text-decoration:none } 
+
+    </style>
+</head>
+
+<body>
+    <div class = "top">
+        <span class = "boxMenu1">
+            <a href="/Users/seungyoungoh/workspace/eclopse_workspace/aboutme/WebContent/index.html">홈</a>
+            <a href="/Users/seungyoungoh/workspace/eclopse_workspace/aboutme/WebContent/index.html">자소</a>
+            <a href="/Users/seungyoungoh/workspace/eclopse_workspace/aboutme/WebContent/index.html">홈</a>
+            <a href="/Users/seungyoungoh/workspace/eclopse_workspace/aboutme/WebContent/index.html">몇시</a>
+        </span>
+    </div>
+    <div id = "main">
+        <div id = "contents">
+            <h2>웹이란 뭘까</h2>
+            웹은 영어로 WEB<br>
+            졸려졸려
+        </div>
+        <span class = "boxMenu2">
+            <a href="/Users/seungyoungoh/workspace/eclopse_workspace/aboutme/WebContent/index.html">자기소개</a>
+            <a href="/Users/seungyoungoh/workspace/eclopse_workspace/aboutme/WebContent/index.html">내 사진</a>
+        </span>
+
+        <p>
+            <img src="my_map.png" alt="My Image" width=30%>
+        </p>
+    </div>
+    <footer>
+        <div>osy0056@khu.ac.kr</div>
+    </footer>
+</body>
+</html>
