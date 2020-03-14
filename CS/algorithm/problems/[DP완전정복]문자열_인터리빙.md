@@ -8,15 +8,19 @@ DP 완전정복[^1]
 
 * 풀이
 
-  <img src="https://user-images.githubusercontent.com/46865281/76538071-0e071680-64c2-11ea-9d07-7f97701b2f26.png" alt="image" style="zoom:50%;" />
+  <img src="https://user-images.githubusercontent.com/46865281/76607184-e1e9a500-6556-11ea-8a26-d8773888e449.png" alt="image" style="zoom:33%;" />
+  <img src="https://user-images.githubusercontent.com/46865281/76607227-f3cb4800-6556-11ea-943e-8f0113566d8b.png" alt="image" style="zoom:33%;" />
+  <img src="https://user-images.githubusercontent.com/46865281/76607263-09407200-6557-11ea-9674-7e392a6de4dd.png" alt="image" style="zoom:33%;" />
 
   
 
   
 
-  
+* 생각
 
-* 생각: 우선 나는 이 문제를 못 풀고 해설을 봤다. 순환식을 생각하는 것이 어려웠다. 즉, 삽입. 삭제, 치환 과정에서 하위 구조가 반복되는 것을 생각하기 어려웠다. 
+  * 순환식(재귀)을 정의할 때 각각의 분기가 나눠지도록 OR 연산이 필요하다는 점
+  * 상향식으로 DP를 구현할 때 네 가지 경우를 나눠서 값을 정하는 부분
+  * 위 두 부분이 어려웠던 문제
 
 [^1]: https://github.com/crapas/dp
 
