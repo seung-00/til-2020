@@ -2,9 +2,9 @@
 
 [구글 텐서플로우 첫 걸음 실습 정리 문서](https://colab.research.google.com/notebooks/mlcc/synthetic_features_and_outliers.ipynb?utm_source=mlcc&utm_campaign=colab-external&utm_medium=referral&utm_content=syntheticfeatures-colab&hl=ko)
 
+[TOC]
 
-
-### 학습 목표:
+### 학습 목표
 
 * 다른 두 특성의 비율로 합성 특성을 만든다
 * 새 특성을 선형 회귀 모델의 입력으로 사용한다.

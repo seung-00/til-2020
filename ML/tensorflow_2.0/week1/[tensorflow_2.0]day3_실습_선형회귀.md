@@ -1,6 +1,6 @@
 # 실습  - 텐서플로우 첫걸음, 선형 회귀
 
-[구글 텐서플로우 첫 걸음 실습 정리 문서](https://colab.research.google.com/notebooks/mlcc/synthetic_features_and_outliers.ipynb?utm_source=mlcc&utm_campaign=colab-external&utm_medium=referral&utm_content=syntheticfeatures-colab&hl=ko)
+[구글 텐서플로우 첫 걸음 실습 정리 문서](https://colab.research.google.com/notebooks/mlcc/first_steps_with_tensor_flow.ipynb?utm_source=mlcc&utm_campaign=colab-external&utm_medium=referral&utm_content=firststeps-colab&hl=ko)
 
 [TOC]
 
