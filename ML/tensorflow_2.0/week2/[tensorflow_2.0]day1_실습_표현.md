@@ -108,6 +108,55 @@ display.display(validation_targets.describe())
 
 ### 작업1: 효율적인 특성 세트 개발
 
+```python
+def construct_feature_columns(input_features):
+  """Construct the TensorFlow Feature Columns.
+
+  Args:
+    input_features: The names of the numerical input features to use.
+  Returns:
+    A set of feature columns
+  """ 
+  return set([tf.feature_column.numeric_column(my_feature)
+              for my_feature in input_features])
+```
+
+```python
+def my_input_fn(features, targets, batch_size=1, shuffle=True, num_epochs=None):
+    """Trains a linear regression model.
+  
+    Args:
+      features: pandas DataFrame of features
+      targets: pandas DataFrame of targets
+      batch_size: Size of batches to be passed to the model
+      shuffle: True or False. Whether to shuffle the data.
+      num_epochs: Number of epochs for which data should be repeated. None = repeat indefinitely
+    Returns:
+      Tuple of (features, labels) for next data batch
+    """
+    
+    # Convert pandas data into a dict of np arrays.
+    features = {key:np.array(value) for key,value in dict(features).items()}                                           
+    
+    # Construct a dataset, and configure batching/repeating.
+    ds = Dataset.from_tensor_slices((features,targets)) # warning: 2GB limit
+    ds = ds.batch(batch_size).repeat(num_epochs)
+
+    # Shuffle the data, if specified.
+    if shuffle:
+      ds = ds.shuffle(10000)
+    
+    # Return the next batch of data.
+    features, labels = ds.make_one_shot_iterator().get_next()
+    return features, labels
+```
+
+```python
+
+```
+
+
+
 * **상관행렬**은 각 특성을 타겟과 비교한 결과 및 각 특성을 서로 비교한 결과에 따라 상관성을 보여줌.
 * 여기서 상관성을 피어슨 상관계수(자주 쓰이는 상관계수)로 정의함
 * 피어슨 상관계수 같은 경우, -1이면 완벽한 음의 상관성, +1이면 완벽한 양의 상관성, 0이면 상관성이 없음을 나타냄
