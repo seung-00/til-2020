@@ -67,7 +67,7 @@
 
   * 일반적으로 L2 Regularization이 쓰인다. 성능이 더 좋기 때문. outliar 에 더 민감하다.
 
-  * L1은 특정 feature를 0으로 만들어 업데이트를 멈추도록 하는 특징이 있다.
+  * L1은 가중치 벡터를 듬성듬성(sparse)하게 만든다. 결국 특정 feature를 0으로 만들어 업데이트를 멈추도록 하는 특징이 있다.
 
     * GD(gradient descent)를 위해 각각을 미분 했을 때, L2는 가중치^2에 패널티를 주니까 대략  `lr*2*w `로 업데이트 할 것이고, l1은 `lr*k*w`로 업데이트를 할 것이다.
 
@@ -75,7 +75,7 @@
 
       * 조금 더 구체적으로, L2 norm은 unique shortest path를 가지므로 서로 다른 두 벡터가 주어졌을 때 그 차이가 결코 0이 될 수 없다.
 
-    * L1은 미분 불가능한 점이 생길 수 있으므로 GD할 때 주의 필요.
+    * 아래 그림처럼,  L1은 미분 불가능한 점이 생길 수 있으므로 GD할 때 주의 필요.
 
       <img src="https://t1.daumcdn.net/cfile/tistory/99BED3425CE4B13418" alt="img" style="zoom:50%;" />[^2]
 
