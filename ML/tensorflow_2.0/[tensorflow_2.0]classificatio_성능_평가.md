@@ -4,7 +4,7 @@
 
 [구글 머신러닝 단기 집중 과정도 참고했습니다.](https://developers.google.com/machine-learning/crash-course)
 
-
+[toc]
 
 ### Classification 모델을 평가하는 기준
 
