@@ -12,7 +12,7 @@
 ### 설정
 
 ```python
-from __future__ import print_function
+ofrom __future__ import print_function
 
 import math
 

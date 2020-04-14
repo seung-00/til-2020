@@ -33,6 +33,12 @@
 
   * **recall(재현율) = TP / (TP+FN) => 실제 positive 중 positve로 예측된 비율**
 
+    * **민감도(Sensitivity)** 라고도 불림
+
+  *  **Fall-out(FPR) = 1−FPN=TNN -> 거짓인 것 중 거짓으로 예측된 것들의 비율** 
+
+    * **Specificity(xmrdleh) 라고도 불림**
+
   
 
 ### 왜 다양한 지표가 필요한가?
@@ -88,8 +94,23 @@
 
   
 
-* 이외에도 **Fall-out(FPR)** 과 **AUC** 등의 대표적인 평가 기준들이 존재함.
+* 이외에도 **AUC** 등의 대표적인 평가 기준들이 존재함.
+
+
+
+### ROC Curve
+
+<img src="https://mblogthumb-phinf.pstatic.net/MjAxNzA1MjhfMTE5/MDAxNDk1OTA4MjcxNDEx.au-MU4hAglXPIpf92zdzyQnryn4bSQJLHP13Bj_HTpYg.PXGOpHmJuvwvJR66WHVrbESxyRscTA_lH3o053sItdEg.PNG.sw4r/Resampling_%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C_SW_MK_Final_Final-51.png?type=w800" alt="img" style="zoom:50%;" />[^2]
+
+* ROC 커브는 특이도(Specificity) -1과 민감도(Sensitivity, Recall)를 x, y축에 놓고 그린 곡선이다. 
+
+* ROC 커브는 TPR(True Positive Rate)와 FPR(False Positive Rate)를 동시에 확인할 수 있기 때문에 이진 분류 시스템에 많이 쓰이는 성능 평가 기법이다. 
+
+* x축은 얼마나 잘못 분류되었는 지를 보여주고, y축은 얼마나 잘 분류했는지를 알려준다. 따라서 좌측 상단으로 곡선이 그려질 만큼 진짜들 중 진짜를 잘 예측하고 가짜들 중 가짜를 잘 걸러내는 모델인 것
+
+* 곡선 면적을 적분한 값인 AUC (area under the ROC curve)값을 기준으로 모델의 성능이 수치적으로 평가된다.
 
   
 
 [^1]:https://uberpython.wordpress.com/2012/01/01/precision-recall-sensitivity-and-specificity/
+[^2]: https://m.blog.naver.com/PostView.nhn?blogId=sw4r&logNo=221015817276&proxyReferer=https%3A%2F%2Fwww.google.com%2F
