@@ -23,7 +23,7 @@
 
   * 예컨대 "늑대가 나타났다"라고 외치는 양치기 소년으로 confusion matrix를 만들어보자.
 
-    <img src="/Users/seungyoungoh/Library/Application Support/typora-user-images/image-20200324181029206.png" alt="image-20200324181029206" style="zoom:30%;" />
+    <img src="https://user-images.githubusercontent.com/46865281/80597514-eadcfa00-8a62-11ea-8589-105609cdc3ca.png" alt="image" style="zoom:40%;" />
 
   * 이를 바탕으로 다음을 구할 수 있음.
 
@@ -86,7 +86,7 @@
 
   
 
-  <img src="https://i1.wp.com/i.imgur.com/cJDJU.png" alt="Precision, recall" style="zoom:75%;" />[^1]
+  <img src="https://i1.wp.com/i.imgur.com/cJDJU.png" alt="Precision, recall" style="zoom:60%;" />[^1]
 
   * precision(정밀도) = TP / (TP+**FP**), recall(재현율) = TP / (TP+**FN**) 이므로 A는 정밀도를, B는 재현율을 주의해서 체크해야할 것임.
 
@@ -100,7 +100,7 @@
 
 ### ROC Curve
 
-<img src="https://mblogthumb-phinf.pstatic.net/MjAxNzA1MjhfMTE5/MDAxNDk1OTA4MjcxNDEx.au-MU4hAglXPIpf92zdzyQnryn4bSQJLHP13Bj_HTpYg.PXGOpHmJuvwvJR66WHVrbESxyRscTA_lH3o053sItdEg.PNG.sw4r/Resampling_%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C_SW_MK_Final_Final-51.png?type=w800" alt="img" style="zoom:50%;" />[^2]
+<img src="https://mblogthumb-phinf.pstatic.net/MjAxNzA1MjhfMTE5/MDAxNDk1OTA4MjcxNDEx.au-MU4hAglXPIpf92zdzyQnryn4bSQJLHP13Bj_HTpYg.PXGOpHmJuvwvJR66WHVrbESxyRscTA_lH3o053sItdEg.PNG.sw4r/Resampling_%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C_SW_MK_Final_Final-51.png?type=w800" alt="img" style="zoom:40%;" />[^2]
 
 * ROC 커브는 특이도(Specificity) -1과 민감도(Sensitivity, Recall)를 x, y축에 놓고 그린 곡선이다. 
 
