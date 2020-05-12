@@ -1,16 +1,14 @@
 
 
-## comprehension
+# comprehension
 
 **comprehension**(함축)이란, iterable한 오브젝트를 쉽게 정의하기 위한 파이썬의 문법이다. list, set, dict 등의 자료형에서 comprehension을 지원하고 있다. 
 
 
 
-### list comprehension
+## list comprehension
 
-
-
-**생성**
+### 생성
 
 만약 1부터 10까지 정수를 리스트에 저장해야 한다고 가정하자.
 
@@ -36,21 +34,35 @@ evens = [i*2 for i in range(1, 10+1)]
 
 
 
-
-
-**조건문**
+### 조건문
 
 ```python
 evens = [i for i in range(1,10+1)if i%2 == 0]
+print(evens)
+# [2, 4, 6, 8, 10]
 ```
 
 위와 같이 if 문을 지원한다.
 
+* 삼항 연산자도 가능하다.
 
+  ```python
+  evens = [i if i%2 ==0 else ' ' for i in range(10)]
+  print(evens)
+  # [0, ' ', 2, ' ', 4, ' ', 6, ' ', 8, ' ']
+  ```
 
+  * 요런 식으로 사용 가능
+  
+    ```python
+    contractions = {}... # 각각 sentence들이 연결된 딕셔너리
+    
+    sentence = ' '.join([contractions[t] if t in contractions else t for t in sentence.split(" ")]) # normalization, ' ': sep
+    ```
+  
+    
 
-
-**중첩**
+### 중첩
 
 ```python
 nums = [i+j for i in ['a','b','c','d','e'] for j in ['1','2','3','4','5']]

@@ -239,7 +239,13 @@
 
 ### 2) 교사 강요
 
+* seq2seq 이론 파일에 정리했듯이, 디코더 셀은 이전 디코더 셀의 출력을 입력으로 받음. 그런데 위 코드에서는 `decoder_input`을 정의하고 있음.  왜 필요할까?
+* 훈련 과정에서는 t(이전 시점)의 디코더 셀의 출력을 t+1(현재 시점)의 입력으로 넣어주는 방식이 아니라, t의 실제 값을 t+1의 입력 값으로 사용하는 방식을 사용함. 
+  * 그 까닭은, t의 예측이 틀렸는데 이를 t+1의 예측으로 사용한다면 t+1의 예측도 잘못될 가능성이 높아지고, 연쇄적으로 디코더 전체의 예측을 어렵게 하기 때문임
+  * 이런 상황이 반복되면 훈련 시간이 느려짐. 이를 방지하기 위해 t의 예측 값 대신 실제 값을 t+1의 입력으로 사용하는 것임
+  * 이를 교사 강요라고 함.
 
+### 3) seq2seq 번역기 훈련
 
 
 
@@ -257,9 +263,8 @@ encoder_states = [state_h, state_c]
 # LSTM은 바닐라 RNN과는 달리 상태가 두 개. 바로 은닉 상태와 셀 상태.
 ```
 
-
-
-
+* 인코더를 보면, functional API를 사용한다는 것 외에는 다른 실습의 LSTM의 설계와 크게 다르지 않음. LSTM의 hidden state 크기는 256으로 선택함. 인코더의 내부 상태를 디코더로 넘겨주어야 되기 때문에, `return_state = True` 로 설정함. 
+* LSTM은 state_h와 state_c를 리턴함. 이 두 상태를 `encoder_states`에 저장함. 이 두 상태를 모두 디코더로 전달함. 이것이 앞서 정리한 context vector임.
 
 ```python
 decoder_inputs = Input(shape=(None, tar_vocab_size))
@@ -274,13 +279,25 @@ model.compile(optimizer="rmsprop", loss="categorical_crossentropy")
 
 ```
 
-```
+```python
 model.fit(x=[encoder_input, decoder_input], y=decoder_target, batch_size=64, epochs=50, validation_split=0.2)
 ```
+
+* 디코더는 인코더의 마지막 hidden state를 초기 hidden statef로 사용함. 디코더도 은닉 상태, 셀 상태를 리턴하기는 하지만 훈련 과정에서 사용하지 않음. 출력 층에 프랑스어 단어 집합의 크기만큼 뉴런을 배치한 후 소프트맥스 함수를 이용해서 실제 값과의 오차를 구함
+* 입력으로 `encoder_input`, `decoder_input`이 들어가고, 디코더 실제 값인 `decoder_target`도 필요함(교사 강요) 배치 크기는 64, 총 50 에포크를 학습함. 
+* 사실 위에서 설정한 hidden state 크기와 epoch 수는 실제로 훈련 데이터에 과적합을 일으킴. 중간부터 검증 데이터에 대한 오차인  val_loss 값이 올라감. 이번 실습에서는 과적합 이슈를 해결하지는 않음. seq2seq의 성능에 대한 확인에 중점을 두고 과적합 된 상태로 동작 단계로 넘어가도록 함.
 
 
 
 ### 동작
+
+* 앞서 언급했듯 seq2seq 훈련과 동작은 방식이 조금 다름
+
+  1. 번역하고자 하는 입력 문장이 인코더로 들어가서 hidden, cell state를 얻음
+  2. context vector와 `<sos>`에 해당되는 `\t`를 디코더로 보냄
+  3. 디코더가 `<EOS>`에 해당하는 `\n`이 나올 때까지 다음 문자를 예측하는 행동을 반복함
+
+  
 
 ```python
 encoder_model = Model(inputs=encoder_inputs, outputs=encoder_states)
@@ -305,6 +322,8 @@ decoder_model = Model(inputs=[decoder_inputs] + decoder_states_inputs, outputs=[
 index_to_src = dict((i, char) for char, i in src_to_index.items())
 index_to_tar = dict((i, char) for char, i in tar_to_index.items())
 ```
+
+* 단어들로부터 인데스를 얻는 것이 아니라, 인덱스들로부터 단어를 얻을 수 있는 두 dict를 만들었음.
 
 ```python
 def decode_sequence(input_seq):

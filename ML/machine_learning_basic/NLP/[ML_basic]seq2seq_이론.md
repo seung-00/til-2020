@@ -34,6 +34,7 @@
   <img src="https://user-images.githubusercontent.com/46865281/78332990-010eac00-75c4-11ea-8ec2-9aa1004b8823.png" alt="image" style="zoom:100%;" />
 
   * 머신은 텍스트보다 숫자를 잘 처리하므로, seq2seq는 임베딩 된 단어 벡들을 입력으로 받음.
+  * 위 그림과 같이 I am, a, student 각각 단어가 임베딩 벡터로 표현되어 쓰임
 
 
 
@@ -41,6 +42,8 @@
 
   <img src="https://user-images.githubusercontent.com/46865281/78333160-49c66500-75c4-11ea-9543-3a237e7eaaf6.png" alt="image" style="zoom:100%;" />
 
-  * 디코더의 첫 번째 셀은 context vector(인코더의 마지막 hidden state) 임.
-  * 디코더 각 time step에서 출력 벡터를 softmax 함수에 넣어 확률 값을 구함.이를 보고 디코더는 출력 단어를 결정함.
+  * 디코더 첫 번째 셀의 hidden state 값은 context vector(인코더의 마지막 hidden state) 임
+  * 디코더의 첫 번째 셀은, 이 context vector 값과 현재 t(time step)에서 입렵값인 `<sos>`로부터 다음에 등장할 단어를 예측함
+  * 이 예측된 단어는 t+1의 입렵값이 되고 t+1 셀은 이 입렵값과 t에서의 hidden state로부터 t+1에서의 출력 벡터를 예측함. 이 출력 값이 다음 time step의 입력값이 됨
+  * 디코더 각 time step에서 출력 벡터를 softmax 함수에 넣어 각 단어별 확률 값을 구함.이를 보고 디코더는 출력 단어를 결정함.
 
