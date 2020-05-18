@@ -1,5 +1,3 @@
-# 데이터베이스 이론 및 실습, 5/7 강의 요약
-
  ## Ch 4. Data Modeling and the Entity-Relationship Model
 
 ### 개요
@@ -77,6 +75,7 @@
     * 특정 실제 entity
 
 * Attibutes
+  
   * entity의 특성, column
 * Identifiers
   * Entity instance는 ID를 갖는다. PK
