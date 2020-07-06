@@ -14,6 +14,6 @@
   5. 위 과정은 통신의 **신뢰성 보장**을 위해 필요하며 **Handshake**라 함
   6. 서버는 클라이언트에게 데이터(html)를 보냄
   
-* 위 과정을 **HTTP**(HyperText Transfer Protocol) 통신이라 함. 즉 HTTP는 말 그대로 html을 전송하는 프로토콜
+* 위 과정을 **HTTP**(HyperText Transfer Protocol) 통신이라 함. 즉 HTTP는 말 그대로 html을 전송하는 프로토콜, 80 port
 
 ![image](https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e0f95975-50d8-40f0-b4bd-419d10589d0a/d24ajgf-f899cb2a-4848-4b4a-87d3-7345e36405d1.jpg/v1/fill/w_1032,h_774,q_70,strp/how_internet_works_by_vladstudio_d24ajgf-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTIwMCIsInBhdGgiOiJcL2ZcL2UwZjk1OTc1LTUwZDgtNDBmMC1iNGJkLTQxOWQxMDU4OWQwYVwvZDI0YWpnZi1mODk5Y2IyYS00ODQ4LTRiNGEtODdkMy03MzQ1ZTM2NDA1ZDEuanBnIiwid2lkdGgiOiI8PTE2MDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.jIXoBTe0CJuKJVhnDwiXbk3EfEF6z-kQVduMojmhz_k)
