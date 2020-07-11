@@ -1,4 +1,4 @@
-## Day 1.4
+## Day 2.1
 [프로그래머스 다리를 지나는 트럭](https://programmers.co.kr/learn/courses/30/lessons/42583)
 
 ### 내 코드
@@ -35,3 +35,5 @@ def solution(bridge_length, weight, truck_weights):
 
 
 ### 리뷰
+
+* day 4.1과 비슷
