@@ -54,9 +54,7 @@
 
   
 
-
-
-* 정답 출력 시 f-string, enumerate 활용하기
+* f-string, enumerate 활용하기
 
   ```python
   for testCase,result in enumerate(rstList):
@@ -220,6 +218,7 @@
   * list.pop()은 O(1) 이지만, list.pop(0)은 O(n) 가 소요됨
   * 따라서 stack은 list, queue는 deque를 쓰는 것이 좋음. deque는 양 끝단 모두 O(1)임
     * deque.append(), deque.pop(), deque.appendleft(), deque.popleft()
+  * 단 collections.deque은 슬라이싱이 안 되므로 주의
 
   ```python
   from collections import deque
@@ -261,6 +260,29 @@
   else:
     print('2의 배수 없음')
   ```
+
+* 딕셔너리
+
+  ```python
+  d = {"a":3, "b":100}
+  del d["a"]
+  print(d) # {'b': 100}
+  ```
+
+* any
+
+  any(x), x 중 참이 있으면 return True, x가 모두 거짓일 때 return False. all(x)의 반대
+
+  ```python
+  any([1, 2, 3, 0])
+  # True
+  any([0, ""])
+  # False
+  ```
+
+  
+
+
 
 ## 2. 이런 점은 주의하자
 
