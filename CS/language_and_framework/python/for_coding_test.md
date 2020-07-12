@@ -1,8 +1,28 @@
-# 파이썬 코테 깨알 팁
+# 파이썬으로 코딩테스트
 
 파이썬으로 코딩테스트를 볼 때 유용하거나 주의해야할 깨알 문법들을 정리함
 
+* 주의해야 내장함수 시간 복잡도
 
+  [출처](https://wayhome25.github.io/python/2017/06/14/time-complexity/)
+
+  | Operation    | Example         | Big-O      |
+  | ------------ | --------------- | ---------- |
+  | Index        | l[i]            | O(1)       |
+  | Store        | l[i] = 0        | O(1)       |
+  | Length       | len(l)          | O(1)       |
+  | Append       | l.append(5)     | O(1)       |
+  | Extend       | l.extend(…)     | O(len(…))  |
+  | Construction | list(…)         | O(len(…))  |
+  | Insert       | ㅣ.insert(i, v) | O(N)       |
+  | Delete       | del l[i]        | O(N)       |
+  | Pop          | l.pop(i)        | O(N)       |
+  | Reverse      | l.reverse()     | O(N)       |
+  | Containment  | x in/not in l   | O(N)       |
+  | check ==, != | l1 == l2        | O(N)       |
+  | Sort         | l.sort()        | O(N Log N) |
+
+  
 
 * map을 활용해서 여러 변수들을 캐스팅하여 입력받기
 
