@@ -1,4 +1,4 @@
-# javascript 함수지향
+#  javascript 함수
 
 ## 유효범위
 
@@ -9,9 +9,9 @@
 
   ```javascript
   function a (){
-      var i = 0;
+      let i = 0;
   }
-  for(var i = 0; i < 5; i++){
+  for(let i = 0; i < 5; i++){
       a();
       document.write(i);
   }
@@ -60,7 +60,7 @@
 
      ```javascript
      (function(){
-         var MYAPP = {}
+         let MYAPP = {}
          MYAPP.calculator = {
              'left' : null,
              'right' : null
@@ -99,12 +99,14 @@
     * 할당에 사용된 이름과 관계없이 구별이 가능
 
       ```javascript
-      var foo = function goo(){
+      let foo = function goo(){
       ...
       }
       
       foo();
       ```
+
+
 
 ### js의 함수는 객체, 즉 값으로 취급되며 1급객체다.
 
@@ -141,7 +143,7 @@
 
   ```javascript
   function cal(mode){
-      var funcs = {
+      let funcs = {
           'plus' : function(left, right){return left + right},
           'minus' : function(left, right){return left - right}
       }
@@ -154,13 +156,13 @@
   * 배열의 값으로도 사용할 수 있음
 
   ```javascript
-  var process = [
+  let process = [
       function(input){ return input + 10;},
       function(input){ return input * input;},
       function(input){ return input / 2;}
   ];
-  var input = 1;
-  for(var i = 0; i < process.length; i++){
+  let input = 1;
+  for(let i = 0; i < process.length; i++){
       input = process[i](input);
   }
   alert(input);	// 60.5
@@ -170,16 +172,24 @@
 
 ## 콜백
 
-### 처리의 위임
+### 콜백이란
+
+* 어떤 함수의 인자가 함수인 경우 
+* 아래 예제에서 *sortNumber* 는 콜백 함수
+
+> [array.sort(sortfunc)](https://opentutorials.org/course/50/109)
+>
+> | 인자명   | 데이터형 | 필수/옵션 | 설명                                   |
+> | -------- | -------- | --------- | -------------------------------------- |
+> | sortfunc | function | 옵션      | 원소들 간에 무엇이 우선인지를 판단한다 |
 
 ```javascript
 function sortNumber(a,b){
     // 위의 예제와 비교해서 a와 b의 순서를 바꾸면 정렬순서가 반대가 된다.
     return b-a;
 }
-var numbers = [20, 10, 9,8,7,6,5,4,3,2,1];
-alert(numbers.sort(sortNumber)); // array, [20,10,9,8,7,6,5,4,3,2,1]
+let numbers = [20, 10, 9,8,7,6,5,4,3,2,1];
+alert(numbers.sort(sortNumber));
+// array, [20,10,9,8,7,6,5,4,3,2,1] 
 ```
-
-
 

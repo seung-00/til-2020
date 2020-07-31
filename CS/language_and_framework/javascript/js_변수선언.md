@@ -1,10 +1,6 @@
-# Javascript 기초 문법 (1)
+# Javascript 변수 선언 방식
 
-[생활코딩](https://opentutorials.org/course/743) 강좌를 수강 후 추가적인 정보들을 보충해 정리한 문서입니다.
-
-
-
-## 변수
+## 변수 선언 방식
 
 * js 변수 선언 방식에는  `var` , `let` , `const`가 있다.
   
