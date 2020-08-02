@@ -98,8 +98,6 @@
 
 ### 4. 호이스팅(Hoisting)
 
-[참고한 글](https://evan-moon.github.io/2019/06/18/javascript-let-const/)
-
 * 호이스팅이란 js 파서가 함수가 실행되기 전에 내부에 존재하는 변수/함수 선언들을 **최상단으로 끌어올려(hoist)** 선언하는 것을 의미함
   * 변수가 함수내에서 정의되었을 경우 선언이 함수의 최상위로, 함수 바깥에서 정의되었을 경우는 전역 컨텍스트의 최상위로 변경됨
   * 이 부분 역시 사이드 이펙트 발생시킬 수 있기 때문에 불만의 대상이었음
@@ -108,17 +106,34 @@
 
   * 아래 예시에서 처음 출력은 변수가 선언되기 전이므로 `error`가 발생해야 하지만 뒤의 선언을 호이스팅해서 `undefined`가 출력됐다.
 
-  ```javascript
-  const hoisting = () => {
-    console.log(foo);
-    var foo = 1;
-    console.log(foo);
-  }
-  
-  hoisting();
-  // undefined
-  // 1
-  ```
+    ```javascript
+    const hoisting = () => {
+      console.log(foo);
+      var foo = 1;
+      console.log(foo);
+    }
+    
+    hoisting();
+    // undefined
+    // 1
+    ```
+
+    * 즉 실제로는 아래와 같이 실행되는 것이다.
+
+      ```javascript
+      const hoisting = () => {
+        var foo;	// hoisting
+        console.log(foo);
+        foo = 1;
+        console.log(foo);
+      }
+      
+      hoisting();
+      // undefined
+      // 1
+      ```
+
+      
 
   * 다음과 같은 상황도 발생할 수 있다.
 
@@ -173,3 +188,10 @@
       ```
 
     * 여기서 말하는 초기화가 필요한 상태가 **TDZ** 인 것이다. 즉 `let`, `const`는 **선언** 이후 **TDZ** 구간을 거쳐 **초기화** -> **할당**이 이루어지며 **TDZ** 상태에 접근을 시도하는 경우 에러가 발생한다.
+
+
+
+### REFERENCES
+
+* [JavaScript의 let과 const, 그리고 TDZ](https://evan-moon.github.io/2019/06/18/javascript-let-const/)
+* [Javascript 핵심 개념 알아보기 - JS Flow]([https://www.inflearn.com/course/%ED%95%B5%EC%8B%AC%EA%B0%9C%EB%85%90-javascript-flow](https://www.inflearn.com/course/핵심개념-javascript-flow))
