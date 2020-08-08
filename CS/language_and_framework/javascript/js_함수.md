@@ -174,22 +174,25 @@
 
 ### 콜백이란
 
-* 어떤 함수의 인자가 함수인 경우 
-* 아래 예제에서 *sortNumber* 는 콜백 함수
+* Callback
+  * 무언가가 이 함수를 호출해서 돌려줄거야(call back)
+  * 다른 함수(A)의 매개변수로 콜백함수(B)를 전달하면, A가 B의 제어권을 갖게 된다.
+    * A에 미리 정해진 방식에 따라 B를 호출함
+    * 예를 들어, *this* 에 무엇을 바인딩할지, 매개변수에 어떤 값들을 지정하지, 어떤 타이밍에 콜백을 호출할지
 
-> [array.sort(sortfunc)](https://opentutorials.org/course/50/109)
->
-> | 인자명   | 데이터형 | 필수/옵션 | 설명                                   |
-> | -------- | -------- | --------- | -------------------------------------- |
-> | sortfunc | function | 옵션      | 원소들 간에 무엇이 우선인지를 판단한다 |
+* 예시
 
-```javascript
-function sortNumber(a,b){
-    // 위의 예제와 비교해서 a와 b의 순서를 바꾸면 정렬순서가 반대가 된다.
-    return b-a;
-}
-let numbers = [20, 10, 9,8,7,6,5,4,3,2,1];
-alert(numbers.sort(sortNumber));
-// array, [20,10,9,8,7,6,5,4,3,2,1] 
-```
+  ```javascript
+  setInterval(function(){
+    console.log('1초마다 실행됩니다.');
+  }, 1000);
+  
+  // 인자1: 콜백 함수, 인자2: 주기(ms)
+  ```
 
+  
+
+### REFERENCES
+
+* [MDN](https://developer.mozilla.org/ko/)
+* [Javascript 핵심 개념 알아보기 - JS Flow]([https://www.inflearn.com/course/%ED%95%B5%EC%8B%AC%EA%B0%9C%EB%85%90-javascript-flow](https://www.inflearn.com/course/핵심개념-javascript-flow))

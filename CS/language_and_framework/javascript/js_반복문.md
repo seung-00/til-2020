@@ -42,10 +42,9 @@
 
 * forEach
 
-  [참고](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
-
   * 주어진 callback을 각 요소에 대해 오름차순으로 한 번씩 실행
-  * `arr.forEach(callback(currentvalue[, index[, array]])[, thisArg])`
+  * 구문: `arr.forEach(callback(currentvalue[, index[, array]])[, thisArg])`
+    * `index`,  `array`, `thisArg`는 생략 가능
 
   ```javascript
   const arr = [1,2,3,4];
@@ -66,3 +65,9 @@
   // 2
   // 4
   ```
+
+
+
+### REFERENCES
+
+* [MDN](https://developer.mozilla.org/ko/)

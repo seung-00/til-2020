@@ -191,6 +191,37 @@
 
 
 
+### 연습
+
+* 아래 출력 결과를 예상해보자.
+
+  ```javascript
+  var a = 1;
+  function outer() {
+    console.log(a);
+    
+    function inner() {
+      console.log(a);
+      var a = 3;
+    }
+    
+    inner();
+    
+    console.log(a);
+  } 
+  outer();
+  console.log(a);
+  
+  
+  
+  // 1
+  // undefined
+  // 1
+  // 1
+  ```
+
+
+
 ### REFERENCES
 
 * [JavaScript의 let과 const, 그리고 TDZ](https://evan-moon.github.io/2019/06/18/javascript-let-const/)
