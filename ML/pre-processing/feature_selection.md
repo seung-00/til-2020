@@ -51,4 +51,15 @@
 ## 3. Embeded Method
 
 * 회귀 모델에서의 Ridge, Lasso, Elastic net 의사결정나무에서의 Random Forest와 같은 방법론들이 존재함.
-* [L1, L2 Norm]([https://github.com/young-o/TIL/blob/master/ML/machine_learning_basic/%EC%9D%B4%EB%A1%A0/%5BML_basic%5DL1_L2_regularization.md](https://github.com/young-o/TIL/blob/master/ML/machine_learning_basic/이론/[ML_basic]L1_L2_regularization.md)) 방식이 적용된 회귀 모델인 Ridge와 Lasso가 대표적
+* L1, L2 Norm 방식이 적용된 회귀 모델인 Ridge와 Lasso가 대표적
+
+
+
+## 어떤 방법을 사용할 것인가?
+
+* 각 기법들은 장단이 존재하며 적재적소에 올바른 기법들을 사용할줄 알아야 한다.
+  * 예컨대, L1 Norm으로 벌점은 주는 lasso 는 높은 변수 감소율을 보여주므로 대규모 데이터세트에 적합하지만, 다중공선성 문제에 취약하다.
+* 참고할만한 논문
+  * 다중선형회귀모형에서의 변수선택기법 평가
+  * 고차원 선형모형에서 벌점화우도 방법을 이용한 변수 선택방법 연구
+
