@@ -1,0 +1,11 @@
+.map_wrap {
+	display: flex;
+	flex-direction: column;
+	height: 100%;	
+}
+.footer {
+    background-color: white;
+    height: 100px;
+    /* item의 높이 */
+    margin-top: auto;
+}

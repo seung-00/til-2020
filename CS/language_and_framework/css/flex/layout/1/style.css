@@ -1,0 +1,37 @@
+html,body{
+	height: 100%;
+}
+.wrap {
+    display: flex;
+    flex-direction: column;
+		height: 100%;
+	
+}
+.header {
+  height: 65px;
+  background-color: #00c73c;
+}
+
+.tablist {
+    height: 70px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+}
+
+.aside {
+    display: flex;
+    flex: none;
+    /* 크키가 고정되어야 하는 경우 item에 flex: none을 적용 */
+    width: 400px;
+    background-color: #bfbab078;
+}
+.main{
+    display: flex;
+    flex: 1;
+    overflow: auto;
+}

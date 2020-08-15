@@ -1,0 +1,36 @@
+.header {
+    display: flex;
+    background-color: #00c73c;
+  }
+  .gnb, .logo, .search{
+      flex: none;
+      /* 크기를 고정 */
+  }
+  
+  .gnb {
+      margin-left: auto;
+      /* 오른쪽으로 밈 */
+  }
+  
+  .logo, .gnb {
+      padding: 20px 30px;
+      background-color: rgba(0, 0, 0, .4);
+  }
+  .search {
+      display: flex;
+      width: 400px;
+      padding: 14px 0;
+      margin-left: 10px;
+  }
+  .search_button {
+      width: 37px;
+          border: 0;
+      background-color: #26a93a;
+  }
+  input{
+      flex: 1;
+      width: 322px;
+      height: 37px;
+      background-color: white;
+  }
+  
