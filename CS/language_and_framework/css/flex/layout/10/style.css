@@ -1,0 +1,38 @@
+h3{
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+.channel_list{
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+       flex: none;
+       flex-basis: 33.33%;
+       margin-top: 20px;
+       padding: 0 5px;
+       box-sizing: border-box;
+    }
+.thumb{
+    flex: auto;
+    height: 200px; 
+    background-color: blue;
+}
+
+.image{
+    vertical-align: top;
+}
+
+.channel_list .title{
+    flex: none;
+    flex-basis: 40px;
+    min-height: 0;
+    margin-top: 10px;
+    font-size: 13px;
+}

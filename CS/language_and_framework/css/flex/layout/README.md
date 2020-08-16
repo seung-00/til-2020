@@ -134,7 +134,7 @@
 
 ### container의 justify-content
 
-* `justify-content` 는 주축을 기준으로 아이템을 수평으로 정렬한다. 
+* `justify-content` 는 주축을 기준으로 아이템을 수평으로 정렬 방법을 설정함
 
   * `justify-content: flex-start`(기본값): 주축의 시작 부분을 기준으로 flex item을 정렬한다.
   * `justify-content: center`: 주축의 중앙을 기준으로 flex item을 정렬한다.
@@ -144,6 +144,39 @@
     * 상단 메뉴를 만들 때 사용 가능 (레이아웃 4)
 
   <img src="https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_19.png" width="600" height="100">
+
+### container의 align-items
+
+* `align-items` 속성은 주축을 기준으로 flex item 을 수직으로 정렬한다.
+  * `stretch(기본값)` : 아이템의 높이를 늘려 컨테이너의 전체 높이를 채운다.
+  * `flex-start` : 교차축의 시작 부분을 기준으로 아이템을 정렬한다.
+  * `center` : 교차축의 중앙을 기준으로 아이템을 정렬한다.
+  * `baseline` : 글꼴의 기준선인 baseline을 기준으로 아이템을 정렬한다.
+  * `flex-end` : 교차축의 끝부분을 기준으로 아이템을 정렬한다.
+
+<img src="https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_21.png" width="600" height="100">
+
+### container의 flex-wrap
+
+* `flex-wrap`은 아이템이 컨테이너를 벗어났을 때 줄을 바꿔준다.
+
+  * `flex-direction: row` 와 `flex-direction: column` 두 경우가 다르게 적용된다. 아래는 column인 경우
+
+  <img src="https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_31.png" width="330" height="150">
+
+### container의 align-content
+
+* `align-content`는 주축을 기준으로 아이템들의 수직 정렬 방법을 설정함
+
+  * `justify-content` 은 수직 정렬
+
+* 다음과 같은 속성 값들이 존재
+
+  <img src="https://d2.naver.com/content/images/2018/12/helloworld-201811-flex_32.png" width="600" height="100">
+
+
+
+### 
 
 ### REFERENCE
 

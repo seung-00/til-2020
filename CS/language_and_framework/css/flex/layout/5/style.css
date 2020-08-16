@@ -1,0 +1,40 @@
+h3{
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+.row_wrap {
+    width: 400px;
+    margin: 0 auto;
+}
+.row {
+    /* flex 수평 배치 */
+    display: flex;
+    padding: 10px 0;
+}
+
+.txtfield.big{
+	height: 150px;
+}
+.title_content.big{
+	height: 150px;
+}
+.title_content{
+    display: flex;
+    /* title_content와 txtfield를 중앙 정렬 */
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    font-weight: bold;
+}
+.txtfield{
+		flex: 1;
+    background-color: white;
+    width: 300px;
+    height: 38px;
+    font-size: 13px;
+    padding: 10px;
+    box-sizing: border-box;
+		
+}
