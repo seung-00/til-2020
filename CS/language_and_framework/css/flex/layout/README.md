@@ -106,7 +106,7 @@
 
   
 
-### margin: auto 속성으로 자식 요소 배치
+### margin: auto 속성으로 요소 배치
 
 * 요소의 바깥 여백(margin)을 설정하는 속성에 auto를 적용하면 flexbox에서 아이템을 쉽게 배치 가능
 
