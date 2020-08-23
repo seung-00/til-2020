@@ -29,6 +29,9 @@
 
 * for of
 
+
+  * iterable한 객체(`Arrray`, `Map`, `Set` 등)에 사용 가능한 반복문
+
   ```javascript
   var arr = [1,2,3,4];
   
@@ -42,9 +45,17 @@
 
 * forEach
 
-  * 주어진 callback을 각 요소에 대해 오름차순으로 한 번씩 실행
-  * 구문: `arr.forEach(callback(currentvalue[, index[, array]])[, thisArg])`
+  * 주어진 callback을 각 요소에 대해 오름차순으로 한 번씩 실행하는  메서드
+
+    * `Array`, `Map`, `Set`에 사용 가능 
+
+  * 구문
+
     * `index`,  `array`, `thisArg`는 생략 가능
+
+    ```javascript
+    arr.forEach(callback(currentvalue[, index[, array]])[, thisArg])
+    ```
 
   ```javascript
   const arr = [1,2,3,4];
@@ -67,6 +78,21 @@
   ```
 
 
+
+* for in
+
+  * **객체**의 모든 enumerable 프로퍼티를 반복함.
+
+    * ES6에 추가된 문법 
+    * 객체를 편리하게 순회할 수 있다.
+
+  * 구문
+
+    ```javascript
+    for (variable in object) { ... }
+    ```
+
+    
 
 ### REFERENCES
 
